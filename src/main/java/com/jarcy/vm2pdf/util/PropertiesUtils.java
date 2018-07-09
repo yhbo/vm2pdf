@@ -38,12 +38,12 @@ public class PropertiesUtils {
 		try {
 			//先读取外部配置文件（自定义文件）
 			//通过文件大小判断是否存在自定义文件，比catch 效率高
-			log.debug("【加载配置文件】读取自定义配置文件....");
+			log.debug("【加载配置文件】读取自定义配置文件{}pdf_config.properties....",CONFIG_DIR);
 			File extFile= new File(CONFIG_DIR,"pdf_config.properties");
 			if(extFile.length()!=0){
 				properties.load(new InputStreamReader(new FileInputStream(extFile)));
 			}else{
-				log.debug("【加载配置文件】自定义文件未找到，读取默认配置...");
+				log.debug("【加载配置文件】自定义文件未找到，读取系统配置文件【pdf_config.properties】...");
 				properties.load(PropertiesUtils.class.getResourceAsStream("/pdf_config.properties"));
 			}
 			
