@@ -54,7 +54,8 @@ public class PropertiesUtils {
 		}
 	}
 	
-	public String getProperty(String key){
+	@Deprecated
+	public static String getProperty(String key){
 		if(properties.getProperty(key)==null){
 			try {
 				properties.load(PropertiesUtils.class.getResourceAsStream("/pdf_config.properties"));
