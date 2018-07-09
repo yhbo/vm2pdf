@@ -12,14 +12,16 @@ import org.slf4j.LoggerFactory;
 
 public class PropertiesUtils {
 
-	private static Properties  properties= new Properties();
+	private static Properties  properties= null;
 	
 	//配置文件路径
 	private static final String CONFIG_DIR =PropertiesUtils.class.getResource("/").getPath();
 	
 	private static final Logger log =LoggerFactory.getLogger(PropertiesUtils.class);
 	
-	private PropertiesUtils(){};
+public PropertiesUtils(){
+	    System.out.println(123);
+	    };
 	
 	/**
 	 * 实例化Properties
@@ -28,8 +30,8 @@ public class PropertiesUtils {
 	public static synchronized Properties getInstance(){
 		if(properties ==null ){
 			properties = new Properties();
+		    init();
 		}
-		init();
 		return properties;
 	}
 	
@@ -68,7 +70,8 @@ public class PropertiesUtils {
 	}
 	
 	public static void main(String[] args) {
-		String value=PropertiesUtils.getInstance().getProperty("vm_template_dir");
+	    System.out.println("22222");
+		String value=PropertiesUtils.getProperty("vm_template_dir");
 		System.out.println("value="+value);
 	}
 }
